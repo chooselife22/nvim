@@ -84,13 +84,18 @@ _G.packer_plugins = {
     path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/fzf-lua",
     url = "https://github.com/ibhagwan/fzf-lua"
   },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
   ["nvim-fzf"] = {
     loaded = true,
     path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/nvim-fzf",
     url = "https://github.com/vijaymarupudi/nvim-fzf"
   },
   ["nvim-lspconfig"] = {
-    config = { "\27LJ\2\2„\1\0\0\3\0\b\0\f6\0\0\0'\1\1\0B\0\2\0029\0\2\0009\0\3\0005\1\4\0006\2\5\0=\2\5\0015\2\6\0=\2\a\1B\0\2\1K\0\1\0\nflags\1\0\1\26debounce_text_changes\3–\1\14on_attach\1\0\0\nsetup\nvolar\14lspconfig\frequire\0" },
+    config = { "\27LJ\2\2­\1\0\0\3\1\t\0\0196\0\0\0'\1\1\0B\0\2\0029\0\2\0009\0\3\0004\1\0\0B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\4\0009\0\3\0005\1\5\0-\2\0\0=\2\6\0015\2\a\0=\2\b\1B\0\2\1K\0\1\0\0\0\nflags\1\0\1\26debounce_text_changes\3–\1\14on_attach\1\0\0\nvolar\nsetup\15solargraph\14lspconfig\frequire\0" },
     loaded = true,
     path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
@@ -202,7 +207,7 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
-try_loadstring("\27LJ\2\2„\1\0\0\3\0\b\0\f6\0\0\0'\1\1\0B\0\2\0029\0\2\0009\0\3\0005\1\4\0006\2\5\0=\2\5\0015\2\6\0=\2\a\1B\0\2\1K\0\1\0\nflags\1\0\1\26debounce_text_changes\3–\1\14on_attach\1\0\0\nsetup\nvolar\14lspconfig\frequire\0", "config", "nvim-lspconfig")
+try_loadstring("\27LJ\2\2­\1\0\0\3\1\t\0\0196\0\0\0'\1\1\0B\0\2\0029\0\2\0009\0\3\0004\1\0\0B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\4\0009\0\3\0005\1\5\0-\2\0\0=\2\6\0015\2\a\0=\2\b\1B\0\2\1K\0\1\0\0\0\nflags\1\0\1\26debounce_text_changes\3–\1\14on_attach\1\0\0\nvolar\nsetup\15solargraph\14lspconfig\frequire\0", "config", "nvim-lspconfig")
 time([[Config for nvim-lspconfig]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)

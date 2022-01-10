@@ -55,6 +55,7 @@ return require('packer').startup(function(use)
 	use {
 		'neovim/nvim-lspconfig',
 		config = function()
+			require('lspconfig').solargraph.setup{}
 			require('lspconfig').volar.setup {
 				on_attach = on_attach,
 				flags = {
@@ -122,4 +123,7 @@ return require('packer').startup(function(use)
 	use "moll/vim-bbye"
 	use "slim-template/vim-slim"
 	use "sheerun/vim-polyglot"
+
+	-- colors
+	use { "ellisonleao/gruvbox.nvim" }
 end)

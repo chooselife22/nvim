@@ -31,3 +31,7 @@ vim.g.splitjoin_ruby_hanging_args = 0
 vim.g.splitjoin_ruby_do_block_split = 0
 
 vim.g.camelcasemotion_key = '<leader>'
+
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
+vim.o.termguicolors = true
