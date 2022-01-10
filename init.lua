@@ -3,4 +3,4 @@ require('settings')
 require('mappings')
 
 require('fzf')
-require('vim_rails')
+require('vim-rails')

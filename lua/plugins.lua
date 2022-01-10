@@ -123,4 +123,3 @@ return require('packer').startup(function(use)
 	use "slim-template/vim-slim"
 	use "sheerun/vim-polyglot"
 end)
-
