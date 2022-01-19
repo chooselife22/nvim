@@ -89,6 +89,16 @@ _G.packer_plugins = {
     path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  nerdtree = {
+    loaded = true,
+    path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/nerdtree",
+    url = "https://github.com/preservim/nerdtree"
+  },
   ["nvim-fzf"] = {
     loaded = true,
     path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/nvim-fzf",
@@ -100,14 +110,8 @@ _G.packer_plugins = {
     path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
-  ["nvim-tree.lua"] = {
-    config = { "\27LJ\2\2¢\1\0\0\4\0\t\0\r6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\0015\2\6\0004\3\0\0=\3\a\2=\2\b\1B\0\2\1K\0\1\0\24update_focused_file\16ignore_list\1\0\2\15update_cwd\2\venable\2\ffilters\1\0\0\1\0\1\rdotfiles\1\nsetup\14nvim-tree\frequire\0" },
-    loaded = true,
-    path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/kyazdani42/nvim-tree.lua"
-  },
   ["nvim-treesitter"] = {
-    config = { "\27LJ\2\2þ\1\0\0\3\0\f\0\0156\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\0015\2\6\0=\2\a\0015\2\b\0=\2\t\0015\2\n\0=\2\v\1B\0\2\1K\0\1\0\fautotag\1\0\1\venable\2\vindent\1\0\1\venable\1\14highlight\1\0\2&additional_vim_regex_highlighting\2\venable\2\21ensure_installed\1\0\0\1\5\0\0\thtml\15javascript\truby\15typescript\nsetup\28nvim-treesitter.configs\frequire\0" },
+    config = { "\27LJ\2\2¾\1\0\0\3\0\n\0\r6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\0015\2\6\0=\2\a\0015\2\b\0=\2\t\1B\0\2\1K\0\1\0\fautotag\1\0\1\venable\2\vindent\1\0\1\venable\1\21ensure_installed\1\0\0\1\5\0\0\thtml\15javascript\truby\15typescript\nsetup\28nvim-treesitter.configs\frequire\0" },
     loaded = true,
     path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -201,22 +205,23 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/vim-tbone",
     url = "https://github.com/tpope/vim-tbone"
+  },
+  ["vim-vinegar"] = {
+    loaded = true,
+    path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/vim-vinegar",
+    url = "https://github.com/tpope/vim-vinegar"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\2¾\1\0\0\3\0\n\0\r6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\0015\2\6\0=\2\a\0015\2\b\0=\2\t\1B\0\2\1K\0\1\0\fautotag\1\0\1\venable\2\vindent\1\0\1\venable\1\21ensure_installed\1\0\0\1\5\0\0\thtml\15javascript\truby\15typescript\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
 try_loadstring("\27LJ\2\2­\1\0\0\3\1\t\0\0196\0\0\0'\1\1\0B\0\2\0029\0\2\0009\0\3\0004\1\0\0B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\4\0009\0\3\0005\1\5\0-\2\0\0=\2\6\0015\2\a\0=\2\b\1B\0\2\1K\0\1\0\0\0\nflags\1\0\1\26debounce_text_changes\3–\1\14on_attach\1\0\0\nvolar\nsetup\15solargraph\14lspconfig\frequire\0", "config", "nvim-lspconfig")
 time([[Config for nvim-lspconfig]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\2þ\1\0\0\3\0\f\0\0156\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\0015\2\6\0=\2\a\0015\2\b\0=\2\t\0015\2\n\0=\2\v\1B\0\2\1K\0\1\0\fautotag\1\0\1\venable\2\vindent\1\0\1\venable\1\14highlight\1\0\2&additional_vim_regex_highlighting\2\venable\2\21ensure_installed\1\0\0\1\5\0\0\thtml\15javascript\truby\15typescript\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\2¢\1\0\0\4\0\t\0\r6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\0015\2\6\0004\3\0\0=\3\a\2=\2\b\1B\0\2\1K\0\1\0\24update_focused_file\16ignore_list\1\0\2\15update_cwd\2\venable\2\ffilters\1\0\0\1\0\1\rdotfiles\1\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
-time([[Config for nvim-tree.lua]], false)
 if should_profile then save_profiles() end
 
 end)

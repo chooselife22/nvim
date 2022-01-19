@@ -74,10 +74,10 @@ return require('packer').startup(function(use)
 				ensure_installed = {
 					'html', 'javascript', 'ruby', 'typescript'
 				},
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = true
-				},
+				-- highlight = {
+				-- 	enable = true,
+				-- 	additional_vim_regex_highlighting = true
+				-- },
 				indent = {
 					enable = false
 				},
@@ -91,20 +91,17 @@ return require('packer').startup(function(use)
 	use { 'nvim-treesitter/nvim-treesitter-textobjects' }
 
 	-- nvim-tree
-	use {
-		'kyazdani42/nvim-tree.lua',
-		requires = 'kyazdani42/nvim-web-devicons',
-		config = function() require'nvim-tree'.setup {
-				filters = {
-					dotfiles = false,
-				},
-				update_focused_file = {
-					enable      = true,
-					update_cwd  = true,
-					ignore_list = {}
-				},
-		} end
-	}
+	-- use {
+	-- 	'kyazdani42/nvim-tree.lua',
+	-- 	requires = 'kyazdani42/nvim-web-devicons',
+	-- 	config = function() require'nvim-tree'.setup {
+	-- 			filters = {
+	-- 				dotfiles = false,
+	-- 			},
+	-- 	} end
+	-- }
+
+	use 'preservim/nerdtree'
 
 	-- copilot
 	use { 'github/copilot.vim', }
@@ -118,6 +115,7 @@ return require('packer').startup(function(use)
 	use "tpope/vim-bundler"
 	use "tpope/vim-rails"
 	use "tpope/vim-tbone"
+	use "tpope/vim-vinegar"
 	use "wsdjeg/vim-fetch"
 	use "AndrewRadev/splitjoin.vim"
 	use "moll/vim-bbye"
@@ -126,4 +124,20 @@ return require('packer').startup(function(use)
 
 	-- colors
 	use { "ellisonleao/gruvbox.nvim" }
+	-- use 'folke/tokyonight.nvim'
+	-- use {
+	-- 	'EdenEast/nightfox.nvim',
+	-- 	require('nightfox').load('nightfox')
+	-- }
+	
+
+	-- statusline
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+		require('lualine').setup {
+			options = { theme = 'gruvbox' }
+		}
+	}
 end)
+

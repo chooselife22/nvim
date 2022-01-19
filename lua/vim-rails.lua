@@ -4,7 +4,14 @@ vim.api.nvim_exec([[command Eroutes Einitializer]], true)
 local vim_rails = {}
 vim_rails.config = function()
       vim.g.rails_projections = {
-            ["spec/decorators/*_decorator.rb"] = {
+            ["app/services/*.rb"] = {
+                  ["command"] = "service",
+                  ["affinity"] = "model",
+                  ["related"] = "app/models/{}.rb",
+                  ["test"] = "spec/services/{}_spec.rb",
+                  ["template"] = "class %S\n\n  def run\n  end\nend",
+            },
+            ["app/decorators/*_decorator.rb"] = {
                   ["command"] = "decorator",
                   ["related"] = "app/models/{}.rb",
                   ["affinity"] = "model",
@@ -15,13 +22,6 @@ vim_rails.config = function()
                   ["related"] = "app/models/{}.rb",
                   ["affinity"] = "model",
                   ["template"] = "Fabricator :{} do\n\nend",
-            },
-            ["app/services/*.rb"] = {
-                  ["command"] = "service",
-                  ["affinity"] = "model",
-                  ["test"] = "spec/services/%s_spec.rb",
-                  ["related"] = "app/models/%s.rb",
-                  ["template"] = "class %S\n\n  def run\n  end\nend",
             },
             ["app/javascript/packs/*.js"] = {
                   ["command"] = "pack",
