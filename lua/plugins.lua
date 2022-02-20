@@ -7,6 +7,58 @@ augroup end
 
 local nvim_lsp = require('lspconfig')
 
+-- https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities.textDocument.colorProvider = { dynamicRegistration = false }
+
+-- luasnip setup
+local luasnip = require 'luasnip'
+
+-- nvim-cmp setup
+local cmp = require 'cmp'
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  mapping = {
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = false,
+    },
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end,
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+  },
+}
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -55,15 +107,36 @@ return require('packer').startup(function(use)
 	use {
 		'neovim/nvim-lspconfig',
 		config = function()
-			require('lspconfig').solargraph.setup{}
+			require('lspconfig').solargraph.setup{
+				on_attach = on_attach
+			}
 			require('lspconfig').volar.setup {
 				on_attach = on_attach,
 				flags = {
 					debounce_text_changes = 150
 				}
 			}
+			require('lspconfig').tailwindcss.setup{
+				on_attach = on_attach,
+				capabilities = capabilities,
+				settings = {
+					tailwindCSS = {
+						colorDecorators = true,
+						-- emmetCompletions = true,
+						experimental = {
+							classRegex = {
+								"\\.([^\\.]*)",
+							}
+						}
+					}
+				}
+			}
 		end
 	}
+  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+  use 'L3MON4D3/LuaSnip' -- Snippets plugin
 
 	-- treesitter
 	use {
@@ -138,6 +211,12 @@ return require('packer').startup(function(use)
 		require('lualine').setup {
 			options = { theme = 'gruvbox' }
 		}
+	}
+
+	-- color highlighting
+	use {
+		'norcalli/nvim-colorizer.lua',
+		require('colorizer').setup()
 	}
 end)
 

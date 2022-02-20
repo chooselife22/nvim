@@ -69,6 +69,21 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    loaded = true,
+    path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  cmp_luasnip = {
+    loaded = true,
+    path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
   ["copilot.vim"] = {
     loaded = true,
     path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/copilot.vim",
@@ -99,13 +114,23 @@ _G.packer_plugins = {
     path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/nerdtree",
     url = "https://github.com/preservim/nerdtree"
   },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/norcalli/nvim-colorizer.lua"
+  },
   ["nvim-fzf"] = {
     loaded = true,
     path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/nvim-fzf",
     url = "https://github.com/vijaymarupudi/nvim-fzf"
   },
   ["nvim-lspconfig"] = {
-    config = { "\27LJ\2\2­\1\0\0\3\1\t\0\0196\0\0\0'\1\1\0B\0\2\0029\0\2\0009\0\3\0004\1\0\0B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\4\0009\0\3\0005\1\5\0-\2\0\0=\2\6\0015\2\a\0=\2\b\1B\0\2\1K\0\1\0\0\0\nflags\1\0\1\26debounce_text_changes\3–\1\14on_attach\1\0\0\nvolar\nsetup\15solargraph\14lspconfig\frequire\0" },
+    config = { "\27LJ\2\2ø\2\0\0\6\2\21\0(6\0\0\0'\1\1\0B\0\2\0029\0\2\0009\0\3\0005\1\4\0-\2\0\0=\2\5\1B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\6\0009\0\3\0005\1\a\0-\2\0\0=\2\5\0015\2\b\0=\2\t\1B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\n\0009\0\3\0005\1\v\0-\2\0\0=\2\5\1-\2\1\0=\2\f\0015\2\18\0005\3\r\0005\4\15\0005\5\14\0=\5\16\4=\4\17\3=\3\19\2=\2\20\1B\0\2\1K\0\1\0\0\0\1\0\rsettings\16tailwindCSS\1\0\0\17experimental\15classRegex\1\0\0\1\2\0\0\15\\.([^\\.]*)\1\0\1\20colorDecorators\2\17capabilities\1\0\0\16tailwindcss\nflags\1\0\1\26debounce_text_changes\3–\1\1\0\0\nvolar\14on_attach\1\0\0\nsetup\15solargraph\14lspconfig\frequire\0" },
     loaded = true,
     path = "/home/local/PDC01/asc/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
@@ -214,18 +239,19 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+try_loadstring("\27LJ\2\2ø\2\0\0\6\2\21\0(6\0\0\0'\1\1\0B\0\2\0029\0\2\0009\0\3\0005\1\4\0-\2\0\0=\2\5\1B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\6\0009\0\3\0005\1\a\0-\2\0\0=\2\5\0015\2\b\0=\2\t\1B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\n\0009\0\3\0005\1\v\0-\2\0\0=\2\5\1-\2\1\0=\2\f\0015\2\18\0005\3\r\0005\4\15\0005\5\14\0=\5\16\4=\4\17\3=\3\19\2=\2\20\1B\0\2\1K\0\1\0\0\0\1\0\rsettings\16tailwindCSS\1\0\0\17experimental\15classRegex\1\0\0\1\2\0\0\15\\.([^\\.]*)\1\0\1\20colorDecorators\2\17capabilities\1\0\0\16tailwindcss\nflags\1\0\1\26debounce_text_changes\3–\1\1\0\0\nvolar\14on_attach\1\0\0\nsetup\15solargraph\14lspconfig\frequire\0", "config", "nvim-lspconfig")
+time([[Config for nvim-lspconfig]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 try_loadstring("\27LJ\2\2¾\1\0\0\3\0\n\0\r6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\0015\2\6\0=\2\a\0015\2\b\0=\2\t\1B\0\2\1K\0\1\0\fautotag\1\0\1\venable\2\vindent\1\0\1\venable\1\21ensure_installed\1\0\0\1\5\0\0\thtml\15javascript\truby\15typescript\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
 time([[Config for nvim-treesitter]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-try_loadstring("\27LJ\2\2­\1\0\0\3\1\t\0\0196\0\0\0'\1\1\0B\0\2\0029\0\2\0009\0\3\0004\1\0\0B\0\2\0016\0\0\0'\1\1\0B\0\2\0029\0\4\0009\0\3\0005\1\5\0-\2\0\0=\2\6\0015\2\a\0=\2\b\1B\0\2\1K\0\1\0\0\0\nflags\1\0\1\26debounce_text_changes\3–\1\14on_attach\1\0\0\nvolar\nsetup\15solargraph\14lspconfig\frequire\0", "config", "nvim-lspconfig")
-time([[Config for nvim-lspconfig]], false)
 if should_profile then save_profiles() end
 
 end)
 
 if not no_errors then
+  error_msg = error_msg:gsub('"', '\\"')
   vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: '..error_msg..'" | echom "Please check your config for correctness" | echohl None')
 end
