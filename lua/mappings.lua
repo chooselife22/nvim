@@ -11,7 +11,10 @@ vim.api.nvim_set_keymap('n', '<leader>rc',
     "<cmd>:so ~/.config/nvim/init.lua<CR>",
     { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-e>',
-    ":NERDTreeToggle<CR>",
+    ":NeoTreeRevealToggle<CR>",
+    { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '-',
+    ":NeoTreeRevealInSplitToggle<CR>",
     { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-J>',
     "<C-W><C-J>",
