@@ -35,3 +35,5 @@ vim.g.camelcasemotion_key = '<leader>'
 vim.o.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme gruvbox]])
 vim.o.termguicolors = true
+
+vim.g.gutentags_enable = true

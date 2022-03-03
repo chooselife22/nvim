@@ -7,6 +7,9 @@ vim.api.nvim_set_keymap('n', '<leader>es',
 vim.api.nvim_set_keymap('n', '<leader>ep',
     "<cmd>:e ~/.config/nvim/lua/plugins.lua<CR>",
     { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>em',
+    "<cmd>:e ~/.config/nvim/lua/mappings.lua<CR>",
+    { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>rc',
     "<cmd>:so ~/.config/nvim/init.lua<CR>",
     { noremap = true, silent = true })
@@ -28,7 +31,9 @@ vim.api.nvim_set_keymap('n', '<C-L>',
 vim.api.nvim_set_keymap('n', '<C-H>',
     "<C-W><C-H>",
     { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F5>', ':set hlsearch!<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("i", "<C-J>", "copilot#Accept('<CR>')", { silent = true, expr = true })
 vim.api.nvim_set_keymap('n', '<leader>q',
     ":Bdelete<CR>",
     { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<F8>', ':TagbarToggle<CR>', { noremap = true, silent = true })
