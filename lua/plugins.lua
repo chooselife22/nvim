@@ -164,6 +164,12 @@ return require('packer').startup(function(use)
 	use { 'nvim-treesitter/nvim-treesitter-textobjects' }
 
 	use {
+		'prettier/vim-prettier',
+		run = 'yarn install',
+		ft = {'javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'markdown', 'vue', 'html'}
+	}
+
+	use {
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v1.x",
 		requires = { 
@@ -207,22 +213,22 @@ return require('packer').startup(function(use)
 					},
 				},
 				filesystem = {
-					filters = { --These filters are applied to both browsing and searching
-						show_hidden = true,
-						respect_gitignore = true,
+					filtered_items = { --These filters are applied to both browsing and searching
+						hide_dotfiles = false,
+						hide_gitignored = true,
 					},
 					follow_current_file = true, -- This will find and focus the file in the active buffer every
 																			 -- time the current file is changed while the tree is open.
 					use_libuv_file_watcher = false, -- This will use the OS level file watchers
 																					-- to detect changes instead of relying on nvim autocmd events.
-					hijack_netrw_behavior = "open_split",
+					hijack_netrw_behavior = "open_current",
 																-- "open_default", -- netrw disabled, opening a directory opens neo-tree
 																									-- in whatever position is specified in window.position
 																-- "open_split",  -- netrw disabled, opening a directory opens within the
 																									-- window like netrw would, regardless of window.position
 																-- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
 					window = {
-						position = "left",
+						position = "right",
 						width = 40,
 						mappings = {
 							["<2-LeftMouse>"] = "open",
@@ -235,9 +241,9 @@ return require('packer').startup(function(use)
 							["H"] = "toggle_hidden",
 							["I"] = "toggle_gitignore",
 							["R"] = "refresh",
-							["/"] = "fuzzy_finder",
-							--["/"] = "filter_as_you_type", -- this was the default until v1.28
-							--["/"] = "none" -- Assigning a key to "none" will remove the default mapping
+							-- ["/"] = "fuzzy_finder",
+							-- ["/"] = "filter_as_you_type", -- this was the default until v1.28
+							["/"] = "noop", -- Assigning a key to "none" will remove the default mapping
 							["f"] = "filter_on_submit",
 							["<c-x>"] = "clear_filter",
 							["a"] = "add",
@@ -370,5 +376,6 @@ return require('packer').startup(function(use)
 		'norcalli/nvim-colorizer.lua',
 		require('colorizer').setup()
 	}
+	use 'duane9/nvim-rg'
 end)
 

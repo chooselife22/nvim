@@ -37,3 +37,4 @@ vim.api.nvim_set_keymap('n', '<leader>q',
     ":Bdelete<CR>",
     { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<F8>', ':TagbarToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Space>', 'za', { noremap = true, silent = true })

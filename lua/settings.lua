@@ -15,14 +15,16 @@ vim.g.showcmd = true
 
 vim.g.showmatch = true
 
+vim.wo.wrap = true
+
 vim.g.hlsearch = true
 vim.g.incsearch = true
 vim.g.ignorecase = true
 vim.g.smartcase = true
 
-vim.wo.foldlevel = 99
-vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldlevel = 99
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 vim.g.copilot_no_tab_map = true
 
@@ -36,4 +38,4 @@ vim.o.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme gruvbox]])
 vim.o.termguicolors = true
 
-vim.g.gutentags_enable = true
+-- vim.g.gutentags_enable = true
