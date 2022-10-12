@@ -344,6 +344,7 @@ return require('packer').startup(function(use)
 	use "tpope/vim-repeat"
 	use "tpope/vim-bundler"
 	use "tpope/vim-rails"
+	require('vim-rails')
 	use "tpope/vim-tbone"
 	-- use "tpope/vim-vinegar"
 	use "wsdjeg/vim-fetch"
