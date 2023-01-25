@@ -1,24 +1,18 @@
 vim.api.nvim_set_keymap('n', '<leader>ec',
     "<cmd>:e ~/.config/nvim/init.lua<CR>",
     { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>es',
-    "<cmd>:e ~/.config/nvim/lua/settings.lua<CR>",
-    { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ep',
-    "<cmd>:e ~/.config/nvim/lua/plugins.lua<CR>",
-    { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>em',
-    "<cmd>:e ~/.config/nvim/lua/mappings.lua<CR>",
-    { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>rc',
     "<cmd>:so ~/.config/nvim/init.lua<CR>",
     { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-e>',
-    ":NeoTreeRevealToggle<CR>",
+vim.api.nvim_set_keymap('n', '<leader>ed',
+    "<cmd>:e ~/.config/nvim/after/plugin/defaults.lua<CR>",
     { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '-',
-    ":NeoTreeRevealInSplitToggle<CR>",
+vim.api.nvim_set_keymap('n', '<leader>ep',
+    "<cmd>:e ~/.config/nvim/lua/custom/plugins.lua<CR>",
     { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>em',
+--     "<cmd>:e ~/.config/nvim/lua/mappings.lua<CR>",
+--    { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-J>',
     "<C-W><C-J>",
     { noremap = true, silent = true })
@@ -37,4 +31,4 @@ vim.api.nvim_set_keymap('n', '<leader>q',
     ":Bdelete<CR>",
     { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<F8>', ':TagbarToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Space>', 'za', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<Space>', 'za', { noremap = true, silent = true })
