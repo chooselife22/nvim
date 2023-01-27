@@ -49,7 +49,7 @@ require('packer').startup(function(use)
 
   require('nvim-treesitter.configs').setup {
     endwise = {
-        enable = true,
+      enable = true,
     },
   }
 
@@ -60,6 +60,44 @@ require('packer').startup(function(use)
 
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  require 'lualine'.setup {
+    winbar = {
+      lualine_c = {
+        {
+          'filename',
+          path = 2
+        }
+      },
+    },
+    inactive_winbar = {
+      lualine_c = {
+        {
+          'filename',
+          path = 2
+        }
+      },
+    },
+    sections = {
+      lualine_b = {
+        { 'branch', cond = function() return vim.fn.winwidth(0) > 120 end },
+        'diff',
+        'diagnostics'
+      },
+      lualine_c = {
+        {}
+      }
+    },
+    inactive_sections = {
+      lualine_b = {
+        { 'branch', cond = function() return vim.fn.winwidth(0) > 120 end },
+        'diff',
+        'diagnostics'
+      },
+      lualine_c = {
+        {}
+      }
+    }
+  }
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
@@ -353,6 +391,15 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
 
+  solargraph = {
+    settings = {
+      solargraph = {
+        diagnostics = true,
+        bundler = true,
+        -- commandPath = '/home/local/PDC01/asc/.rvm/gems/ruby-2.7.4/bin/solargraph',
+      },
+    },
+  },
   sumneko_lua = {
     Lua = {
       workspace = { checkThirdParty = false },

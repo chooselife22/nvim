@@ -32,3 +32,4 @@ vim.api.nvim_set_keymap('n', '<leader>q',
     { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<F8>', ':TagbarToggle<CR>', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<Space>', 'za', { noremap = true, silent = true })
+vim.g.netrw_liststyle = 0
