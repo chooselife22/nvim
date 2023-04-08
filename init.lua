@@ -61,25 +61,12 @@ require('packer').startup(function(use)
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   require 'lualine'.setup {
-    winbar = {
-      lualine_c = {
-        {
-          'filename',
-          path = 2
-        }
-      },
-    },
-    inactive_winbar = {
-      lualine_c = {
-        {
-          'filename',
-          path = 2
-        }
-      },
-    },
     sections = {
       lualine_b = {
-        { 'branch', cond = function() return vim.fn.winwidth(0) > 120 end },
+        {
+          'filename',
+          path = 2
+        },
         'diff',
         'diagnostics'
       },
@@ -89,7 +76,10 @@ require('packer').startup(function(use)
     },
     inactive_sections = {
       lualine_b = {
-        { 'branch', cond = function() return vim.fn.winwidth(0) > 120 end },
+        {
+          'filename',
+          path = 2
+        },
         'diff',
         'diagnostics'
       },
@@ -251,7 +241,8 @@ pcall(require('telescope').load_extension, 'fzf')
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<C-b>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<C-f>', function()
+vim.keymap.set('n', '<C-f>', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>sg', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
@@ -262,7 +253,6 @@ end, { desc = '[/] Fuzzily search in current buffer]' })
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
 -- [[ Configure Treesitter ]]
@@ -391,6 +381,17 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
 
+  volar = {
+    settings = {
+      volar = {
+        useWorkspaceDependencies = true,
+        completion = {
+          autoImport = true,
+          tagCasing = 'kebab',
+        },
+      },
+    },
+  },
   solargraph = {
     settings = {
       solargraph = {
@@ -454,7 +455,7 @@ cmp.setup {
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+      select = false,
     },
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -478,6 +479,9 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'nvim_lua' },
   },
 }
 
