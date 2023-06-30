@@ -3,8 +3,11 @@ return function(use)
   use 'tpope/vim-repeat'
   use 'tpope/vim-tbone'
   use 'tpope/vim-vinegar'
+  use 'tpope/vim-eunuch'
   use 'slim-template/vim-slim'
   use 'nvim-tree/nvim-web-devicons'
+  use { 'junegunn/fzf', run = ":call fzf#install()" }
+  use { 'junegunn/fzf.vim' }
   require'nvim-web-devicons'.setup {
     -- your personnal icons can go here (to override)
     -- you can specify color or cterm_color instead of specifying both of them
@@ -38,7 +41,6 @@ return function(use)
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
-      'hrsh7th/nvim-cmp',
       'hrsh7th/cmp-nvim-lua',
     },
   }
@@ -111,4 +113,35 @@ return function(use)
       vim.keymap.set({ "n" }, "T", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
     end
   }
+  use({
+    'Wansmer/treesj',
+    requires = { 'nvim-treesitter' },
+    config = function()
+      require('treesj').setup({
+        -- Use default keymaps
+        -- (<space>m - toggle, <space>j - join, <space>s - split)
+        use_default_keymaps = true,
+
+        -- Node with syntax error will not be formatted
+        check_syntax_error = true,
+
+        -- If line after join will be longer than max value,
+        -- node will not be formatted
+        max_join_length = 99999,
+
+        -- hold|start|end:
+        -- hold - cursor follows the node/place on which it was called
+        -- start - cursor jumps to the first symbol of the node being formatted
+        -- end - cursor jumps to the last symbol of the node being formatted
+        cursor_behavior = 'hold',
+
+        -- Notify about possible problems or not
+        notify = true,
+        langs = {},
+
+        -- Use `dot` for repeat action
+        dot_repeat = true,
+      })
+    end,
+  })
 end
