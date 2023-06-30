@@ -60,34 +60,6 @@ require('packer').startup(function(use)
 
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
-  require 'lualine'.setup {
-    sections = {
-      lualine_b = {
-        {
-          'filename',
-          path = 2
-        },
-        'diff',
-        'diagnostics'
-      },
-      lualine_c = {
-        {}
-      }
-    },
-    inactive_sections = {
-      lualine_b = {
-        {
-          'filename',
-          path = 2
-        },
-        'diff',
-        'diagnostics'
-      },
-      lualine_c = {
-        {}
-      }
-    }
-  }
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically

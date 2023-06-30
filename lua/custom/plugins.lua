@@ -103,4 +103,12 @@ return function(use)
     use_devicons = true,
   }
   use 'wsdjeg/vim-fetch'
+  use {
+    'ckolkey/ts-node-action',
+    after = 'nvim-treesitter',
+    config = function() -- Optional
+      require("ts-node-action").setup({})
+      vim.keymap.set({ "n" }, "T", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
+    end
+  }
 end
