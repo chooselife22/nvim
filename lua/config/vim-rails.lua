@@ -25,7 +25,7 @@ vim.g.rails_projections = {
             ["affinity"] = "model",
             ["template"] = "Fabricator :{} do\n\nend",
       },
-      ["app/javascript/packs/*.js"] = {
+      ["packs/*"] = {
             ["command"] = "pack",
       },
       ["app/javascript/*.js"] = {

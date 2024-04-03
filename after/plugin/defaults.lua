@@ -71,3 +71,4 @@ vim.cmd([[
 vim.cmd([[
     iabbrev vue2 <template lang='pug'><CR>div<CR></template><CR><CR><script><CR>export default {<CR>data() {<CR>return {<CR>}<CR>},<CR>props: {<CR>}<CR>}<CR></script><CR><style scoped><CR></style>
   ]], true)
+vim.cmd('autocmd FileType ruby setlocal indentkeys-=.')
