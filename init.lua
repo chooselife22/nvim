@@ -453,8 +453,8 @@ mason_lspconfig.setup_handlers {
 require('fidget').setup()
 --
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-  command = 'undojoin | Neoformat',
-  pattern = '*',
-})
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--   command = 'undojoin | Neoformat',
+--   pattern = '*',
+-- })
 
