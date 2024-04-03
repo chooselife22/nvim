@@ -32,7 +32,6 @@ vim.api.nvim_set_keymap('n', '<leader>q',
     { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<F8>', ':TagbarToggle<CR>', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<Space>', 'za', { noremap = true, silent = true })
-
 local vim = vim
 local opt = vim.opt
 local api = vim.api
@@ -64,3 +63,11 @@ local autoCommands = {
 }
 
 M.nvim_create_augroups(autoCommands)
+
+vim.g.netrw_liststyle = 0
+vim.cmd([[
+    iabbrev vue3 <template lang='pug'><CR>div<CR></template><CR><CR><script setup lang='ts'><CR>import { ref, computed, watch, defineProps } from 'vue'<CR></script><CR><style scoped><CR></style>
+  ]], true)
+vim.cmd([[
+    iabbrev vue2 <template lang='pug'><CR>div<CR></template><CR><CR><script><CR>export default {<CR>data() {<CR>return {<CR>}<CR>},<CR>props: {<CR>}<CR>}<CR></script><CR><style scoped><CR></style>
+  ]], true)

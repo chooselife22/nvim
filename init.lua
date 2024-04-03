@@ -30,8 +30,6 @@ require('packer').startup(function(use)
     'hrsh7th/nvim-cmp',
     requires = {
       'hrsh7th/cmp-nvim-lsp',
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
@@ -39,13 +37,10 @@ require('packer').startup(function(use)
     },
   }
   local cmp = require 'cmp'
-  local luasnip = require 'luasnip'
 
   cmp.setup {
-    snippet = {
-      expand = function(args)
-        luasnip.lsp_expand(args.body)
-      end,
+    formatting = {
+      format = require("tailwindcss-colorizer-cmp").formatter
     },
     mapping = cmp.mapping.preset.insert {
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -58,8 +53,6 @@ require('packer').startup(function(use)
       ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
-        elseif luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
         else
           fallback()
         end
@@ -67,8 +60,6 @@ require('packer').startup(function(use)
       ['<S-Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
-          luasnip.jump(-1)
         else
           fallback()
         end
@@ -76,7 +67,6 @@ require('packer').startup(function(use)
     },
     sources = {
       { name = 'nvim_lsp' },
-      { name = 'luasnip' },
       { name = 'buffer' },
       { name = 'path' },
       { name = 'nvim_lua' },
@@ -435,14 +425,19 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  tailwindcss = {
+    tailwindCSS = {
+      emmetCompletions = true,
+    }
+  }
 }
 
 -- Setup neovim lua configuration
 require('neodev').setup()
 --
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Setup mason so it can manage external tooling
 require('mason').setup()
