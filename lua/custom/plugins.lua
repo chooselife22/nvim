@@ -18,49 +18,32 @@ return function(use)
   -- Typing a shebang line causes the file type to be re-detected. Additionally the file will be automatically made executable (chmod +x) after the next write.
   use 'slim-template/vim-slim'
   -- use 'davydovanton/vim-html2slim'
-  use 'nvim-tree/nvim-web-devicons'
   use { 'junegunn/fzf', run = ":call fzf#install()" }
   use { 'junegunn/fzf.vim' }
-  require'nvim-web-devicons'.setup {
-    -- your personnal icons can go here (to override)
-    -- you can specify color or cterm_color instead of specifying both of them
-    -- DevIcon will be appended to `name`
-    override = {
-      zsh = {
-        icon = "",
-        color = "#428850",
-        cterm_color = "65",
-        name = "Zsh"
-      }
-    };
-    -- globally enable different highlight colors per icon (default to true)
-    -- if set to false all icons will have the default icon's color
-    color_icons = true;
-    -- globally enable default icons (default to false)
-    -- will get overriden by `get_icons` option
-    default = true;
-  }
   use 'github/copilot.vim'
   use {
     'tpope/vim-rails',
     config = [[require('config.vim-rails')]]
   }
-  use 'prichrd/netrw.nvim'
-  require'netrw'.setup {
-    -- mappings = {
-    --   ['p'] = function(payload)
-    --     -- Payload is an object describing the node under the cursor, the object
-    --     -- has the following keys:
-    --     -- - dir: the current netrw directory (vim.b.netrw_curdir)
-    --     -- - node: the name of the file or directory under the cursor
-    --     -- - link: the referenced file if the node under the cursor is a symlink
-    --     -- - extension: the file extension if the node under the cursor is a file
-    --     -- - type: the type of node under the cursor (0 = dir, 1 = file, 2 = symlink)
-    --     print(vim.inspect(payload))
-    --   end,
-    -- },
-    use_devicons = true,
-  }
+  use({'prichrd/netrw.nvim',
+    config = function()
+      require'netrw'.setup {
+        -- mappings = {
+        --   ['p'] = function(payload)
+        --     -- Payload is an object describing the node under the cursor, the object
+        --     -- has the following keys:
+        --     -- - dir: the current netrw directory (vim.b.netrw_curdir)
+        --     -- - node: the name of the file or directory under the cursor
+        --     -- - link: the referenced file if the node under the cursor is a symlink
+        --     -- - extension: the file extension if the node under the cursor is a file
+        --     -- - type: the type of node under the cursor (0 = dir, 1 = file, 2 = symlink)
+        --     print(vim.inspect(payload))
+        --   end,
+        -- },
+        use_devicons = true,
+      }
+    end
+  })
   use 'wsdjeg/vim-fetch'
   use {
     'ckolkey/ts-node-action',
@@ -112,32 +95,74 @@ return function(use)
       })
     end
   })
-  use 'NvChad/nvim-colorizer.lua'
-  require("colorizer").setup {
-    filetypes = { "*" },
-    user_default_options = {
-      RGB = true, -- #RGB hex codes
-      RRGGBB = true, -- #RRGGBB hex codes
-      names = true, -- "Name" codes like Blue or blue
-      RRGGBBAA = false, -- #RRGGBBAA hex codes
-      AARRGGBB = false, -- 0xAARRGGBB hex codes
-      rgb_fn = false, -- CSS rgb() and rgba() functions
-      hsl_fn = false, -- CSS hsl() and hsla() functions
-      css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-      css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-      -- Available modes for `mode`: foreground, background,  virtualtext
-      mode = "background", -- Set the display mode.
-      -- Available methods are false / true / "normal" / "lsp" / "both"
-      -- True is same as normal
-      tailwind = true, -- Enable tailwind colors
-      -- parsers can contain values used in |user_default_options|
-      sass = { enable = false, parsers = { "css" }, }, -- Enable sass colors
-      virtualtext = "■",
-      -- update color values even if buffer is not focused
-      -- example use: cmp_menu, cmp_docs
-      always_update = false
-    },
-    -- all the sub-options of filetypes apply to buftypes
-    buftypes = {},
-  }
+  use({
+    'NvChad/nvim-colorizer.lua',
+    config = function()
+      require("colorizer").setup {
+        filetypes = { "*" },
+        user_default_options = {
+          RGB = true, -- #RGB hex codes
+          RRGGBB = true, -- #RRGGBB hex codes
+          names = true, -- "Name" codes like Blue or blue
+          RRGGBBAA = false, -- #RRGGBBAA hex codes
+          AARRGGBB = false, -- 0xAARRGGBB hex codes
+          rgb_fn = false, -- CSS rgb() and rgba() functions
+          hsl_fn = false, -- CSS hsl() and hsla() functions
+          css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+          css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+          -- Available modes for `mode`: foreground, background,  virtualtext
+          mode = "background", -- Set the display mode.
+          -- Available methods are false / true / "normal" / "lsp" / "both"
+          -- True is same as normal
+          tailwind = true, -- Enable tailwind colors
+          -- parsers can contain values used in |user_default_options|
+          sass = { enable = false, parsers = { "css" }, }, -- Enable sass colors
+          virtualtext = "■",
+          -- update color values even if buffer is not focused
+          -- example use: cmp_menu, cmp_docs
+          always_update = false
+        },
+        -- all the sub-options of filetypes apply to buftypes
+        buftypes = {},
+      }
+    end
+  })
+  use({'nvim-tree/nvim-web-devicons',
+    config = function()
+      require'nvim-web-devicons'.setup {
+        -- your personnal icons can go here (to override)
+        -- you can specify color or cterm_color instead of specifying both of them
+        -- DevIcon will be appended to `name`
+        override = {
+          zsh = {
+            icon = "",
+            color = "#428850",
+            cterm_color = "65",
+            name = "Zsh"
+          }
+        };
+        -- globally enable different highlight colors per icon (default to true)
+        -- if set to false all icons will have the default icon's color
+        color_icons = true;
+        -- globally enable default icons (default to false)
+        -- will get overriden by `get_icons` option
+        default = true;
+      }
+    end
+  })
+  -- Enable `lukas-reineke/indent-blankline.nvim`
+  -- See `:help indent_blankline.txt`
+  --use({
+  --  'lukas-reineke/indent-blankline.nvim', -- Add indentation guides even on blank lines
+  --  config = function()
+  --    require('ibl').setup {
+  --      indent = {
+  --        char = '┊',
+  --      },
+  --      whitespace = {
+  --        remove_blankline_trail = true
+  --      }
+  --    }
+  --  end
+  --})
 end

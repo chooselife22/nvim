@@ -37,8 +37,8 @@ require('packer').startup(function(use)
     },
   }
   local cmp = require 'cmp'
-  local luasnip = require 'luasnip'
-  luasnip.filetype_extend("vue", { "vue" })
+  --local luasnip = require 'luasnip'
+  --luasnip.filetype_extend("vue", { "vue" })
 
   cmp.setup {
     formatting = {
@@ -85,17 +85,19 @@ require('packer').startup(function(use)
   use { -- Additional text objects via treesitter
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
+    requires = "nvim-treesitter/nvim-treesitter",
   }
-  use { -- Automatically add end statements
+  use({ -- Automatically add end statements
     'RRethy/nvim-treesitter-endwise',
     after = 'nvim-treesitter',
-  }
-
-  require('nvim-treesitter.configs').setup {
-    endwise = {
-      enable = true,
-    },
-  }
+    config = function()
+      require('nvim-treesitter.configs').setup {
+       endwise = {
+         enable = true,
+       },
+      }
+    end
+  })
 
   -- Git related plugins
   use 'tpope/vim-fugitive'
@@ -104,7 +106,6 @@ require('packer').startup(function(use)
 
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
-  -- use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
 
@@ -198,9 +199,7 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+  callback = function() vim.highlight.on_yank() end,
   group = highlight_group,
   pattern = '*',
 })
@@ -218,17 +217,6 @@ require('lualine').setup {
 
 -- Enable Comment.nvim
 require('Comment').setup()
-
--- Enable `lukas-reineke/indent-blankline.nvim`
--- See `:help indent_blankline.txt`
-require('ibl').setup {
-  indent = {
-    char = '┊',
-  },
-  whitespace = {
-    remove_blankline_trail = true
-  }
-}
 
 -- Gitsigns
 -- See `:help gitsigns.txt`
@@ -279,7 +267,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'lua', 'typescript', 'ruby', 'help', 'vim', 'vue', 'pug' },
+  ensure_installed = { 'lua', 'typescript', 'ruby', 'vim', 'vue', 'pug', 'vimdoc' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
