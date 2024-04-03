@@ -229,9 +229,13 @@ require('Comment').setup()
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
-require('indent_blankline').setup {
-  char = '┊',
-  show_trailing_blankline_indent = false,
+require('ibl').setup {
+  indent = {
+    char = '┊',
+  },
+  whitespace = {
+    remove_blankline_trail = true
+  }
 }
 
 -- Gitsigns
@@ -461,3 +465,10 @@ mason_lspconfig.setup_handlers {
 }
 -- Turn on lsp status information
 require('fidget').setup()
+--
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  command = 'undojoin | Neoformat',
+  pattern = '*',
+})
+

@@ -88,4 +88,5 @@ return function(use)
       })
     end,
   })
+  use 'sbdchd/neoformat'
 end
