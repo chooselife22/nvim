@@ -42,7 +42,7 @@ require('packer').startup(function(use)
 
   cmp.setup {
     formatting = {
-      format = require("tailwindcss-colorizer-cmp").formatter
+      --format = require("tailwindcss-colorizer-cmp").formatter
     },
     mapping = cmp.mapping.preset.insert {
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -267,7 +267,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'lua', 'typescript', 'ruby', 'vim', 'vue', 'pug', 'vimdoc' },
+  ensure_installed = { 'lua', 'typescript', 'ruby', 'vim', 'vue', 'pug', 'vimdoc', 'astro', 'css', 'tsx', 'html' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
