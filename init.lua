@@ -267,7 +267,20 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'lua', 'typescript', 'ruby', 'vim', 'vue', 'pug', 'vimdoc', 'astro', 'css', 'tsx', 'html' },
+  ensure_installed = {
+    'lua',
+    'typescript',
+    'javascript',
+    'ruby',
+    'vim',
+    'vue',
+    'pug',
+    'vimdoc',
+    'astro',
+    'css',
+    'tsx',
+    'html',
+  },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -388,7 +401,6 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
-
   volar = {
     settings = {
       volar = {
@@ -408,6 +420,7 @@ local servers = {
         -- commandPath = '/home/local/PDC01/asc/.rvm/gems/ruby-2.7.4/bin/solargraph',
       },
     },
+    cmd = { "bundle", "exec", "solargraph", "stdio" }
   },
   sumneko_lua = {
     Lua = {
@@ -441,11 +454,28 @@ mason_lspconfig.setup {
 
 mason_lspconfig.setup_handlers {
   function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-    }
+    if server_name == "solargraph" then
+      require('lspconfig')[server_name].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = servers[server_name],
+        cmd = { "bundle", "exec", "solargraph", "stdio" }
+      }
+    elseif server_name == "volar" then
+      require('lspconfig')[server_name].setup {
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+        capabilities = capabilities,
+        on_attach = on_attach,
+        cmd = { "./node_modules/.bin/vue-language-server", "--stdio" },
+        settings = servers[server_name],
+      }
+    else
+      require('lspconfig')[server_name].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = servers[server_name],
+      }
+    end
   end,
 }
 

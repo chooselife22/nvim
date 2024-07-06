@@ -165,4 +165,38 @@ return function(use)
   --    }
   --  end
   --})
+  -- use({
+  --   'JoosepAlviste/nvim-ts-context-commentstring',
+  --   config = function()
+  --     require('ts_context_commentstring').setup {
+  --       enable_autocmd = false,
+  --       languages = {
+  --         typescript = {
+  --           -- Uncomment the following lines to use the alternative commentstring
+  --           -- commentstring = '// %s',
+  --           -- single_line_comment = 'auto',
+  --           -- multi_line_comment = 'auto',
+  --         },
+  --         javascript = {
+  --           -- Uncomment the following lines to use the alternative commentstring
+  --           -- commentstring = '// %s',
+  --           -- single_line_comment = 'auto',
+  --           -- multi_line_comment = 'auto',
+  --         },
+  --         typescriptreact = {
+  --           -- Uncomment the following lines to use the alternative commentstring
+  --           -- commentstring = '// %s',
+  --           -- single_line_comment = 'auto',
+  --           -- multi_line_comment = 'auto',
+  --         },
+  --         javascriptreact = {
+  --           -- Uncomment the following lines to use the alternative commentstring
+  --           -- commentstring = '// %s',
+  --           -- single_line_comment = 'auto',
+  --           -- multi_line_comment = 'auto',
+  --         },
+  --       },
+  --     }
+  --   end
+  -- })
 end
