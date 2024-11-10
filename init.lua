@@ -267,20 +267,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = {
-    'lua',
-    'typescript',
-    'javascript',
-    'ruby',
-    'vim',
-    'vue',
-    'pug',
-    'vimdoc',
-    'astro',
-    'css',
-    'tsx',
-    'html',
-  },
+  ensure_installed = { 'lua', 'typescript', 'ruby', 'help', 'vim', 'vue', 'pug', 'astro' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -482,9 +469,12 @@ mason_lspconfig.setup_handlers {
 -- Turn on lsp status information
 require('fidget').setup()
 --
+<<<<<<< HEAD
 
 -- vim.api.nvim_create_autocmd('BufWritePre', {
 --   command = 'undojoin | Neoformat',
 --   pattern = '*',
 -- })
 
+=======
+>>>>>>> ca5a847 (Fold)
